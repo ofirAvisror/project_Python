@@ -62,11 +62,12 @@ def update_book(book_id: int, book: Book, db: Session = Depends(get_db)):
     return book
 
 @app.delete("/{book_id}")
-def delete_book(book_id: UUID):
-    counter = 0
-    for b in BOOKS:
-        counter += 1
-        if b.id == book_id:
-            del BOOKS[counter-1]
-            return f"Book with id {book_id} has been deleted."
-    raise HTTPException(status_code=404, detail=f"Book not found CANT DELETE {book_id}")
+def delete_book(book_id: int ,db: Session = Depends(get_db)):
+    book_model = db.query(models.Book).filter(models.Book.id == str(book_id)).first()
+    if book_model is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Book with the id {book_id} not found",
+        )
+    db.query(models.Book).filter(models.Book.id == str(book_id)).delete()
+    db.commit()
