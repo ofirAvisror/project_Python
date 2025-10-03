@@ -31,11 +31,11 @@ BOOKS = []
 
 @app.get("/")
 def read_api(db: Session = Depends(get_db)):
-    return BOOKS
+    return db.query(models.Book).all()
 
 
 @app.post("/")
-def create_book(book: Book):
+def create_book(book: Book, db: Session = Depends(get_db)):
     BOOKS.append(book)
     return book
 
