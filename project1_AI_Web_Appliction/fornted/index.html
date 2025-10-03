@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" >
+</head>
+<body class ="flex flex-col min-h-screen bg-gray-100 font-sans antialiased">
+    <!-- Navigation Bar -->
+     <nav class="bg-blue-600 p-4 text-white flex justify-between ">
+        <div>
+            <h1 class="text-3xl font-bold">AI Blog Generator</h1>
+        </div>
+        <div>
+            <a href="#" class="text-white hover:underline mx-2">logout</a>
+        </div>
+     </nav>
+    <!-- Main Content -->
+     <div class="flex-grow container mx-auto mt-10 px-4 sm:px-0">
+        <div class=" max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md transition-transform transform hover:scale-105 flex flex-col space-y-6">
+           <!--introduction section--> 
+            <div class="text-center">
+                <h2 class="text-2xl font-semibold mb-4">Welcome to the AI Blog Generator</h2>
+                <p class="text-gray-700">Generate high-quality blog articles from YouTube videos using artificial intelligence
+                 Simply enter the link to the YouTube videos below and let the AI create the content for you!</p>
+            </div>
+            <br>
+            <!--YoyTube section-->
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-4">Enter YouTube Video Link</h2>
+                <div class="flex space-x-4 ">
+                    <input id="youtubeLink" type="url" placeholder="Paste YouTube video link here" class="flex-grow p-2 border border-blue-400 rounded-l-md">
+                    <button id="generateBlogButton" class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors">Generate Blog Post</button>
+                </div>
+                <!-- Generated Blog Deisplay Section -->
+                <section  class="mt-10 flex-groe ">
+                    <h2 class="text-xl font-semibold mb-4">Generated Blog Post</h2>
+                    <div id="blogContent" class="mt-2 text-gray-700 spce-y-4">
+                        <!-- Generated blog content will appear here -->
+                    </div>
+                </section>
+                </div>
+        
+
+     </div>
+</body>
+</html>
