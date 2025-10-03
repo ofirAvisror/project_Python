@@ -5,6 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Blog Generator</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" >
+     <style>
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to { 
+                transform: rotate(360deg);
+            }
+        }
+         
+        
+         @-webkit-keyframes rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to { 
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        .load {
+            width: 100px;
+            height: 100px;
+            margin: 110px auto 0;
+            border:solid 10px #8822aa;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+             -webkit-transition: all 0.5s ease-in;
+            -webkit-animation-name:             rotate; 
+            -webkit-animation-duration:         1.0s; 
+            -webkit-animation-iteration-count:  infinite;
+            -webkit-animation-timing-function: linear;
+                
+                 transition: all 0.5s ease-in;
+            animation-name:             rotate; 
+            animation-duration:         1.0s; 
+            animation-iteration-count:  infinite;
+            animation-timing-function: linear; 
+        }
+    </style>
 </head>
 <body class ="flex flex-col min-h-screen bg-gray-100 font-sans antialiased">
     <!-- Navigation Bar -->
@@ -14,6 +55,7 @@
         </div>
         <div>
             <a href="#" class="text-white hover:underline mx-2">logout</a>
+            <a href="login" class="text-white hover:underline mx-2">Login</a>
         </div>
      </nav>
     <!-- Main Content -->
@@ -25,6 +67,7 @@
                 <p class="text-gray-700">Generate high-quality blog articles from YouTube videos using artificial intelligence
                  Simply enter the link to the YouTube videos below and let the AI create the content for you!</p>
             </div>
+        
             <br>
             <!--YoyTube section-->
             <div class="text-center">
@@ -33,6 +76,12 @@
                     <input id="youtubeLink" type="url" placeholder="Paste YouTube video link here" class="flex-grow p-2 border border-blue-400 rounded-l-md">
                     <button id="generateBlogButton" class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors">Generate Blog Post</button>
                 </div>
+            </div>    
+            <!-- Loading Indicator -->
+            <div  style="display:none" id="loading-circle" class="load">
+
+            </div>
+
                 <!-- Generated Blog Deisplay Section -->
                 <section  class="mt-10 flex-groe ">
                     <h2 class="text-xl font-semibold mb-4">Generated Blog Post</h2>
@@ -41,8 +90,12 @@
                     </div>
                 </section>
                 </div>
-        
-
      </div>
+     <footer class=" text-black text-center p-4 mt-6">
+        powered by <a href="https://github.com/ofirAvisror/project_Python/pull/1">ofir</a>
+     </footer>
+     <script>
+
+     </script>
 </body>
 </html>
