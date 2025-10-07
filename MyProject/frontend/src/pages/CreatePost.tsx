@@ -11,7 +11,7 @@ import {
   FormControlLabel,
   Switch,
 } from '@mui/material';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { postsAPI } from '../services/api';
@@ -19,14 +19,10 @@ import { postsAPI } from '../services/api';
 const schema = yup.object({
   title: yup.string().required('Title is required'),
   content: yup.string().required('Content is required'),
-  is_published: yup.boolean(),
+  is_published: yup.boolean().required().default(false),
 });
 
-interface CreatePostFormData {
-  title: string;
-  content: string;
-  is_published: boolean;
-}
+type CreatePostFormData = yup.InferType<typeof schema>;
 
 const CreatePost: React.FC = () => {
   const navigate = useNavigate();
@@ -38,7 +34,7 @@ const CreatePost: React.FC = () => {
     formState: { errors, isSubmitting },
     watch,
   } = useForm<CreatePostFormData>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver<CreatePostFormData>(schema),
     defaultValues: {
       is_published: false,
     },
@@ -46,7 +42,7 @@ const CreatePost: React.FC = () => {
 
   const isPublished = watch('is_published');
 
-  const onSubmit = async (data: CreatePostFormData) => {
+  const onSubmit: SubmitHandler<CreatePostFormData> = async (data) => {
     try {
       setError('');
       await postsAPI.createPost(data);
