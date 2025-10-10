@@ -50,8 +50,8 @@ MyProject/
 
 ## Prerequisites
 
-- Python 3.8+
-- Node.js 16+
+- Python 3.11+
+- Node.js 18-20 (Node.js 22+ not yet supported by react-scripts)
 - PostgreSQL 12+
 - npm or yarn
 
