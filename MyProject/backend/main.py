@@ -105,7 +105,7 @@ def update_post(post_id: int, post: PostUpdate, current_user: User = Depends(get
     if db_post.author_id != current_user.id:
         raise HTTPException(status_code=403, detail="Not enough permissions")
     
-    update_data = post.dict(exclude_unset=True)
+    update_data = post.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         setattr(db_post, field, value)
     

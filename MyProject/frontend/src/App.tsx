@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AuthProvider } from './contexts/AuthContext';
-import { ProtectedRoute } from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
