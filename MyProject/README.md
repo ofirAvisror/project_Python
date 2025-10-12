@@ -2,6 +2,29 @@
 
 A full-stack web application built with FastAPI, PostgreSQL, React, and TypeScript.
 
+## 🚀 QUICK START - Project Fixed & Ready!
+
+**Your project has been fixed!** The missing `.env` configuration has been resolved.
+
+### ⭐ Start Here:
+
+```bash
+# Windows - One command to set everything up:
+setup-all.bat
+
+# Mac/Linux - One command to set everything up:
+chmod +x setup-all.sh && ./setup-all.sh
+
+# Or use Docker (easiest):
+docker-compose up
+```
+
+📖 **New User?** Read [`START_HERE.md`](START_HERE.md) for detailed quick-start instructions!
+
+📊 **See what was fixed:** Check [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for complete project health report.
+
+---
+
 ## Features
 
 - **Backend (FastAPI)**:
