@@ -1,4 +1,5 @@
 // /frontend/src/pages/CreatePost.tsx
+// This page is used to create a new post
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
