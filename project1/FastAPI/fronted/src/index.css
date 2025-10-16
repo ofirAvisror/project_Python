@@ -3,35 +3,95 @@
 @tailwind utilities;
 
 :root {
-  /* Softer light theme */
-  --background: 210 40% 98%;
+  --background: 255 100% 100%;
   --foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96%;
+  --muted: 210 40% 98%;
   --muted-foreground: 215 16% 47%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 47.4% 11.2%;
   --card: 0 0% 100%;
-  --card-foreground: 222.2 47.4% 11.2%;
   --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --primary: 222 47% 11%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222 47% 11%;
-  --accent: 262 83% 57%; /* brand: purple */
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  --ring: 215 20% 65%;
-  --radius: 0.5rem;
+  --accent: 222 89% 55%;
+  --radius: 12px;
 }
 
 * { border-color: hsl(var(--border)); }
+
 html, body, #root { height: 100%; }
+
 body {
-  background-color: hsl(var(--background));
+  margin: 0;
   color: hsl(var(--foreground));
+  background: hsl(var(--background));
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background-image: radial-gradient(1200px 600px at 10% -10%, hsl(var(--accent)/0.08), transparent), radial-gradient(800px 400px at 90% 0%, hsl(var(--accent)/0.06), transparent);
-  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--accent) / .45);
+  outline-offset: 2px;
+}
+
+.container-page {
+  max-width: 960px;
+  margin-inline: auto;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+.surface {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+.surface-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.surface-body {
+  padding: 16px 18px;
+}
+
+.h1 {
+  font-weight: 800;
+  font-size: clamp(22px, 2.3vw, 28px);
+  letter-spacing: -0.01em;
+}
+
+.subtle {
+  color: hsl(var(--muted-foreground));
+  font-size: 13px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+}
+
+.table tbody tr { border-top: 1px solid hsl(var(--border)); }
+.table td { padding: 12px 14px; }
+.table .actions { width: 176px; }
+
+.line {
+  height: 8px;
+  width: 100%;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.line > span {
+  display: block;
+  height: 100%;
+  background: hsl(var(--accent));
 }
