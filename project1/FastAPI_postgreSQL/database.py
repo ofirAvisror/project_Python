@@ -1,5 +1,6 @@
 # database.py
 # this file is used to connect to the database
+# postgresql
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker, declarative_base
