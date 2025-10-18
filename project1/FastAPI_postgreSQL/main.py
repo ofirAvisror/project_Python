@@ -164,4 +164,14 @@ async def get_choice_question(choice_id: int, db: db_dependency):
 @app.get("/questions/{question_id}/choices/{choice_id}")
 async def get_question_choice(question_id: int, choice_id: int, db: db_dependency):
     return db.query(models.Choice).filter(models.Choice.question_id == question_id, models.Choice.id == choice_id).first()
-    
+
+@app.put("/choices/{choice_id}")
+async def create_choice(question_id: int, choice: ChoiceCreate, db: db_dependency):
+    db_question = db.query(models.Question).filter(models.Question.id == question_id).first()
+    if not db_question:
+        raise HTTPException(status_code=404, detail="Question not found")
+    db_choice = models.Choice(choice_text=choice.choice_text, is_correct=choice.is_correct, question_id=question_id)
+    db.add(db_choice)
+    db.commit()
+    db.refresh(db_choice)
+    return db_choice    
