@@ -1,4 +1,6 @@
-# main.py
+# main.py   - OFIR STEINBERG
+# this file is the main file for the API
+
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from typing import List, Annotated
@@ -48,6 +50,7 @@ class QuestionOut(BaseModel):
     choices: List[ChoiceOut] = []
 
     model_config = {"from_attributes": True}
+
 
 # ---- Endpoints ----
 @app.post("/questions", response_model=QuestionOut)
@@ -175,3 +178,11 @@ async def create_choice(question_id: int, choice: ChoiceCreate, db: db_dependenc
     db.commit()
     db.refresh(db_choice)
     return db_choice    
+
+@app.delete("/questions/{question_id}/choices/{choice_id}   - OFIR STEINBERG")
+async def delete_question_choice(question_id: int, choice_id: int, db: db_dependency):
+    db.query(models.Choice).filter(models.Choice.question_id == question_id, models.Choice.id == choice_id).delete()
+    db.commit()
+    return {"message": "Question choice deleted successfully"}
+
+    
