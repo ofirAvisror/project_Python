@@ -94,6 +94,23 @@ async def create_choice(payload: ChoiceCreate, db: db_dependency):
     db.refresh(c)
     return c
 
+@app.post("/questions/{question_id}/choices", response_model=ChoiceOut)
+async def create_choice_for_question(question_id: int, payload: ChoiceIn, db: db_dependency):
+    # ensure question exists
+    question = db.query(models.Question).filter(models.Question.id == question_id).first()
+    if not question:
+        raise HTTPException(status_code=404, detail="Question not found")
+
+    c = models.Choice(
+        choice_text=payload.choice_text,
+        is_correct=payload.is_correct,
+        question_id=question_id,
+    )
+    db.add(c)
+    db.commit()
+    db.refresh(c)
+    return c
+
 @app.get("/questions/{question_id}", response_model=QuestionOut)
 async def read_question(question_id: int, db: db_dependency):
     result = db.query(models.Question).filter(models.Question.id == question_id).first()
