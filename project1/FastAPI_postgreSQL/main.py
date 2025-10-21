@@ -96,11 +96,12 @@ async def create_choice(payload: ChoiceCreate, db: db_dependency):
 
 @app.post("/questions/{question_id}/choices", response_model=ChoiceOut)
 async def create_choice_for_question(question_id: int, payload: ChoiceIn, db: db_dependency):
-    # ensure question exists
+    # בדיקה שהשאלה קיימת
     question = db.query(models.Question).filter(models.Question.id == question_id).first()
     if not question:
         raise HTTPException(status_code=404, detail="Question not found")
-
+    
+    # יצירת תשובה
     c = models.Choice(
         choice_text=payload.choice_text,
         is_correct=payload.is_correct,
